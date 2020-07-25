@@ -1,12 +1,13 @@
 import React, { Component } from "react";
 import { HashRouter as Router, Route, Link } from "react-router-dom";
 import { connect } from "react-redux";
+import "./MoviePoster.css";
 
-class Home extends Component {
+class MoviePoster extends Component {
   render() {
     return (
       <>
-        <h1>Home page!</h1>
+        <div className="movie">{this.props.value}</div>
       </>
     );
   }
@@ -14,4 +15,4 @@ class Home extends Component {
 const connectStore = (Store) => ({
   Store,
 });
-export default connect(connectStore)(Home);
+export default connect(connectStore)(MoviePoster);
