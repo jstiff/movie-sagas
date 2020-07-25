@@ -4,28 +4,31 @@ import { connect } from "react-redux";
 import "./MoviePoster.css";
 
 class MoviePoster extends Component {
-  checkoutMovie = (event) => {
-    console.log("movie id:", this.props.movie.id);
-    this.props.history.push("/details/1");
+  checkoutMovie = () => {
+    console.log("movie id:", this.props.movie.title);
+    // this.props.history.push("/details/{id}");
   };
   render() {
     return (
       <>
-        <Router>
-          <div className="movie">
-            <img
-              poop={this.props.movie.id}
-              onClick={this.checkoutMovie}
-              src={this.props.movie.poster}
-            />
-            <p>{this.props.movie.title}</p>
-          </div>
-        </Router>
+        <div className="movie">
+          <Link
+            //key={this.props.movie.id}
+            id={this.props.movie.id}
+            to={`details/${this.props.movie.id}`}
+            onClick={this.checkoutMovie}
+          >
+            <img src={this.props.movie.poster} />
+          </Link>
+          <p>{this.props.movie.title}</p>
+        </div>
       </>
     );
   }
 }
-const connectStore = (Store) => ({
-  Store,
-});
-export default connect(connectStore)(MoviePoster);
+const mapStateToProps = (state) => {
+  return {
+    state,
+  };
+};
+export default connect(mapStateToProps)(MoviePoster);

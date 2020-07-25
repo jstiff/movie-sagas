@@ -10,7 +10,7 @@ class MovieDisplay extends Component {
     return (
       <>
         <div className="movieGrid">
-          {this.props.Store.movies.map((movie) => {
+          {this.props.state.movies.map((movie) => {
             return <MoviePoster movie={movie} />;
           })}
         </div>
@@ -18,7 +18,9 @@ class MovieDisplay extends Component {
     );
   }
 }
-const connectStore = (Store) => ({
-  Store,
-});
-export default connect(connectStore)(MovieDisplay);
+const mapStateToProps = (state) => {
+  return {
+    state,
+  };
+};
+export default connect(mapStateToProps)(MovieDisplay);

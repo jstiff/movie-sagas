@@ -11,10 +11,12 @@ import logger from "redux-logger";
 import createSagaMiddleware from "redux-saga";
 import { takeEvery, put } from "redux-saga/effects";
 import Axios from "axios";
+//import { get } from "../server/routes/movies.router";
 
 // Create the rootSaga generator function
 function* rootSaga() {
   yield takeEvery("NEED_MOVIES", getMoviesFromServer);
+  yield takeEvery("MAKE_CHANGES", editDetailsPage);
 }
 
 function* getMoviesFromServer(action) {
@@ -23,6 +25,14 @@ function* getMoviesFromServer(action) {
     yield put({ type: "SET_MOVIES", payload: response.data });
   } catch (error) {
     console.log("error Inside GetMoviesFromServer!!!", error);
+  }
+}
+function* editDetailsPage(action) {
+  try {
+    console.log("editDetails", action.payload);
+    // yield Axios.put("/movies/", action.payload);
+  } catch (error) {
+    console.log("ERROR in editDetailsPage", error);
   }
 }
 
