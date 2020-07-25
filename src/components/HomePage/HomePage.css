@@ -1,0 +1,24 @@
+.enterBtn {
+  transition-duration: 0.4s;
+  background-color: white;
+  color: black;
+  padding: 70px;
+  font-size: 60px;
+  border-radius: 50%;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  position: absolute;
+  top: 30%;
+  left: 40%;
+}
+
+.enterBtn:hover {
+  background-color: #413c6b; /* Green */
+  color: white;
+}
+.container {
+  width: 80vw;
+  height: 90vh;
+  border: 1px solid black;
+  margin: 0 auto;
+  position: relative;
+}

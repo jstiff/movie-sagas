@@ -4,10 +4,23 @@ import { connect } from "react-redux";
 import "./MoviePoster.css";
 
 class MoviePoster extends Component {
+  checkoutMovie = (event) => {
+    console.log("movie id:", this.props.movie.id);
+    this.props.history.push("/details/1");
+  };
   render() {
     return (
       <>
-        <div className="movie">{this.props.value}</div>
+        <Router>
+          <div className="movie">
+            <img
+              poop={this.props.movie.id}
+              onClick={this.checkoutMovie}
+              src={this.props.movie.poster}
+            />
+            <p>{this.props.movie.title}</p>
+          </div>
+        </Router>
       </>
     );
   }
