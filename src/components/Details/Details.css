@@ -1,0 +1,32 @@
+.body {
+  background-color: rgba(219, 165, 144, 0.5);
+}
+.detailsContainer {
+  width: 60%;
+  margin: 0 auto;
+  background-color: rgba(247, 226, 219, 0.5);
+  padding: 60px;
+  border-radius: 6px;
+}
+h4 {
+  line-height: 2em;
+  font-family: monospace;
+  font-size: 20px;
+  font-weight: 400;
+}
+
+button {
+  margin: 10px;
+  transition-duration: 0.4s;
+  background-color: white;
+  color: black;
+  padding: 20px;
+}
+button:hover {
+  background-color: #413c6b; /* Green */
+  color: white;
+  border-radius: 8px;
+}
+h1 {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
