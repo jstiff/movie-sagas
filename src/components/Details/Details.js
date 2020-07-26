@@ -15,15 +15,17 @@ class Details extends Component {
               <h1>{movie.title}</h1>
               <br />
               <h4>{movie.description}</h4>
+              <Link to={`/edit/${this.movieId}`} data={movie.description}>
+                <button>edit</button>
+              </Link>
+              ;
             </div>
           ) : (
             false
           );
         })}
         <h3>{this.id}</h3>
-        <Link to="/edit">
-          <button>edit</button>
-        </Link>
+
         <Link to="/movies">
           <button>Back to movies</button>
         </Link>

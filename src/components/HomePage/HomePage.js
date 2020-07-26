@@ -12,10 +12,11 @@ class HomePage extends Component {
     this.props.history.push("/movies");
   };
   render() {
+    console.log("Homepage props", this.props);
     return (
       <>
         <div className="container">
-          <h1>Welcome!</h1>
+          <h1>{this.props.name}</h1>
           <button onClick={this.enterSite} className="enterBtn">
             enter
           </button>
@@ -24,7 +25,7 @@ class HomePage extends Component {
     );
   }
 }
-const connectStore = (Store) => ({
-  Store,
+const mapStateToProps = (state) => ({
+  name: "Netflix",
 });
-export default connect(connectStore)(HomePage);
+export default connect(mapStateToProps)(HomePage);

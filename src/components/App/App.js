@@ -10,13 +10,14 @@ import HomePage from "../HomePage/HomePage";
 class App extends Component {
   // Renders the entire app on the DOM
   render() {
+    console.log("redux store", this.props);
     return (
       <div className="App">
         <Router>
           <Route exact path="/" component={HomePage} />
           <Route path="/movies" component={MovieDisplay} />
           <Route path="/details/:id" component={Details} />
-          <Route path="/edit" component={Edit} />
+          <Route path="/edit/:id" component={Edit} />
         </Router>
       </div>
     );

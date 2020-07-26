@@ -1,0 +1,31 @@
+.editForm {
+  height: 70vh;
+  width: 75vw;
+  text-align: center;
+  border: 1px solid black;
+  margin: 0 auto;
+  position: relative;
+}
+.editForm textarea {
+  height: 200px;
+  display: inline-block;
+  margin: 40px;
+  width: 60%;
+  margin: 0 auto;
+  margin-top: 50px;
+  background-color: rgba(247, 226, 219, 0.5);
+  padding: 60px;
+  border-radius: 6px;
+}
+.editForm button {
+  position: absolute;
+  bottom: 5%;
+  right: 5%;
+}
+.titleChange {
+  position: absolute;
+  bottom: 25%;
+  left: 13.5%;
+  width: 250px;
+  height: 40px;
+}

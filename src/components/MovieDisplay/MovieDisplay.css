@@ -5,7 +5,7 @@ body {
   width: 80%;
   display: grid;
   grid-template-columns: repeat(4, 350px);
-  grid-template-rows: repeat(4, 400px);
+  grid-template-rows: repeat(4, 520px);
   grid-auto-flow: row;
   grid-gap: 30px;
   background-color: #fff;

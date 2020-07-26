@@ -1,5 +1,5 @@
 .movie {
-  background-color: #444;
+  background-color: rgb(150, 144, 144);
   color: #fff;
   border-radius: 5px;
   padding: 20px;
@@ -7,7 +7,7 @@
   margin: 30px;
 }
 img {
-  width: 100%;
+  width: 80%;
   height: 80%;
 }
 p {

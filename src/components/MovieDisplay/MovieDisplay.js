@@ -5,12 +5,14 @@ import MoviePoster from "../MoviePoster/MoviePoster";
 import "./MovieDisplay.css";
 
 class MovieDisplay extends Component {
-  // temp = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14];
   render() {
+    console.log("Movie display props", this.props);
+    console.log("Movie display state", this.state);
     return (
       <>
+        {/* <h1>{this}</h1> */}
         <div className="movieGrid">
-          {this.props.state.movies.map((movie) => {
+          {this.props.movies.map((movie) => {
             return <MoviePoster movie={movie} />;
           })}
         </div>
@@ -19,8 +21,9 @@ class MovieDisplay extends Component {
   }
 }
 const mapStateToProps = (state) => {
+  console.log("state", state);
   return {
-    state,
+    movies: state.movies,
   };
 };
 export default connect(mapStateToProps)(MovieDisplay);

@@ -30,7 +30,7 @@ function* getMoviesFromServer(action) {
 function* editDetailsPage(action) {
   try {
     console.log("editDetails", action.payload);
-    // yield Axios.put("/movies/", action.payload);
+    yield Axios.put("/movies/", action.payload);
   } catch (error) {
     console.log("ERROR in editDetailsPage", error);
   }
