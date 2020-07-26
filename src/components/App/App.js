@@ -6,6 +6,7 @@ import Details from "../Details/Details";
 import Edit from "../Edit/Edit";
 import MovieDisplay from "../MovieDisplay/MovieDisplay";
 import HomePage from "../HomePage/HomePage";
+import ConfirmPage from "../ConfirmPage/ConfirmPage";
 
 class App extends Component {
   // Renders the entire app on the DOM
@@ -18,6 +19,7 @@ class App extends Component {
           <Route path="/movies" component={MovieDisplay} />
           <Route path="/details/:id" component={Details} />
           <Route path="/edit/:id" component={Edit} />
+          <Route path="/confirmation" component={ConfirmPage} />
         </Router>
       </div>
     );

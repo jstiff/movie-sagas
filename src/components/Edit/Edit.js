@@ -5,8 +5,8 @@ import "./Edit.css";
 
 class Edit extends Component {
   state = {
-    description: "",
-    title: "",
+    description: this.props.description,
+    title: this.props.title,
   };
   handleChange = (event, type) => {
     console.log(type, event.target.value);
@@ -26,28 +26,36 @@ class Edit extends Component {
       type: "MAKE_CHANGES",
       payload: submissionDetails,
     });
-    this.props.history.push("/");
+
+    //this.props.history.push("/confirmation");
   };
 
   render() {
-    console.log("edit Props", this.props);
+    console.log("INSIDE edit Props", this.props);
     return (
       <>
         <h1>Edit page!</h1>
 
         <form className="editForm" onSubmit={this.submitChanges}>
+          <h3>{this.state.title}</h3>
           <textarea
-            onChange={(event) => this.handleChange(event, "decription")}
+            onChange={(event) => this.handleChange(event, "description")}
             placeholder="Change movie description"
-            value={this.props.description}
+            value={this.state.description}
           />
           <br />
           <input
+            value={this.state.title}
             className="titleChange"
             onChange={(event) => this.handleChange(event, "title")}
             placeholder="Change Movie Title"
           />
-          <button type="submit">submit changes</button>
+          <Link type="submit" to="/confirmation">
+            <button onClick={this.submitChanges}>submit changes</button>
+          </Link>
+          <Link className="returnBtn" to="/movies">
+            <button>Return to movies</button>
+          </Link>
         </form>
       </>
     );
@@ -58,13 +66,12 @@ const mapPropsToState = (state, ownProps) => {
     (movie) => movie.id == ownProps.match.params.id
   );
   if (movie) {
-    return { description: movie.description };
+    return {
+      description: movie.description,
+      title: movie.title,
+    };
   } else {
     return { state };
   }
-
-  return {
-    state,
-  };
 };
 export default connect(mapPropsToState)(Edit);

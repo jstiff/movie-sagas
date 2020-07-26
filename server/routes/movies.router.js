@@ -16,8 +16,4 @@ router.get("/", (req, res) => {
     });
 });
 
-router.put("/:id", (req, res) => {
-  let queryString = `UPDATE "movies" WHERE "id"=${req.params.id};`;
-});
-
 module.exports = router;

@@ -9,13 +9,15 @@
 .editForm textarea {
   height: 200px;
   display: inline-block;
-  margin: 40px;
+
   width: 60%;
   margin: 0 auto;
-  margin-top: 50px;
+  margin-top: 20px;
   background-color: rgba(247, 226, 219, 0.5);
   padding: 60px;
   border-radius: 6px;
+  line-height: 1.7em;
+  font-size: 18px;
 }
 .editForm button {
   position: absolute;
@@ -28,4 +30,10 @@
   left: 13.5%;
   width: 250px;
   height: 40px;
+}
+.returnBtn {
+  position: absolute;
+  bottom: 5%;
+  right: 20%;
+  width: 160px;
 }
