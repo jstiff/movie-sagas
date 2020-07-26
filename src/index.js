@@ -21,8 +21,9 @@ function* rootSaga() {
 }
 
 function* findSomeGenres(action) {
+  console.log("findGeneres", action);
   try {
-    const response = yield Axios.get("/genres");
+    const response = yield Axios.get(`/genres/${action.payload}`);
     yield put({ type: "SET_GENRES", payload: response.data });
   } catch (error) {
     console.log("findSomeGenres", error);

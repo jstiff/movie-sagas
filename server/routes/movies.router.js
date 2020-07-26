@@ -5,9 +5,9 @@ const router = express.Router();
 
 router.get("/", (req, res) => {
   console.log("Router GET was a success");
-  const querySting = `SELECT * FROM movies;`;
+  const queryString = `SELECT * FROM movies;`;
   pool
-    .query(querySting)
+    .query(queryString)
     .then((result) => {
       res.send(result.rows);
     })

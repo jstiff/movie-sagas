@@ -10,6 +10,7 @@ class Details extends Component {
   getGenres = () => {
     this.props.dispatch({
       type: "NEED_GENRES",
+      payload: this.props.match.params.id,
     });
   };
 
@@ -24,8 +25,9 @@ class Details extends Component {
               <h1>{movie.title}</h1>
               <br />
               <h4>{movie.description}</h4>
+              <h2>Genres</h2>
               {this.props.state.genres.map((genre) => {
-                return <h4>{genre}</h4>;
+                return <h4>{genre.name}</h4>;
               })}
               <Link to={`/edit/${this.movieId}`}>
                 <button>edit</button>
