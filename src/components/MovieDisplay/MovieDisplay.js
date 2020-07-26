@@ -5,6 +5,17 @@ import MoviePoster from "../MoviePoster/MoviePoster";
 import "./MovieDisplay.css";
 
 class MovieDisplay extends Component {
+  componentDidMount() {
+    this.displayMovies();
+  }
+  displayMovies = () => {
+    console.log("entering the site");
+    this.props.dispatch({
+      type: "NEED_MOVIES",
+    });
+    // this.props.history.push("/movies");
+  };
+
   render() {
     console.log("Movie display props", this.props);
     console.log("Movie display state", this.state);

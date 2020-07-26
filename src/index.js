@@ -17,6 +17,16 @@ import Axios from "axios";
 function* rootSaga() {
   yield takeEvery("NEED_MOVIES", getMoviesFromServer);
   yield takeEvery("MAKE_CHANGES", editDetailsPage);
+  yield takeEvery("NEED_GENRES", findSomeGenres);
+}
+
+function* findSomeGenres(action) {
+  try {
+    const response = yield Axios.get("/genres");
+    yield put({ type: "SET_GENRES", payload: response.data });
+  } catch (error) {
+    console.log("findSomeGenres", error);
+  }
 }
 
 function* getMoviesFromServer(action) {
@@ -29,8 +39,8 @@ function* getMoviesFromServer(action) {
 }
 function* editDetailsPage(action) {
   try {
-    console.log("EDIT SAGA Details", action.payload);
-    yield Axios.put("/edit", { description: action.payload });
+    console.log("EDIT SAGA Details", action.payload.description);
+    yield Axios.put("/edit/", { description: action.payload.description });
   } catch (error) {
     console.log("ERROR in editDetailsPage", error);
   }
