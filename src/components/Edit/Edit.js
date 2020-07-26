@@ -50,9 +50,9 @@ class Edit extends Component {
             onChange={(event) => this.handleChange(event, "title")}
             placeholder="Change Movie Title"
           />
-          <Link type="submit" to="/confirmation">
-            <button onClick={this.submitChanges}>submit changes</button>
-          </Link>
+          {/* <Link type="submit" to="/confirmation"></Link> */}
+          <button type="submit">submit changes</button>
+
           <Link className="returnBtn" to="/movies">
             <button>Return to movies</button>
           </Link>

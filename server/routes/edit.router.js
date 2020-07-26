@@ -3,10 +3,11 @@ const pool = require("../modules/pool");
 const { default: Axios } = require("axios");
 const router = express.Router();
 
-router.put("/", (req, res) => {
-  console.log("inside ROUTER PUT", req.body.description);
+router.put("/:id", (req, res) => {
+  console.log("inside ROUTER PUT", req.body);
 
-  let queryString = `UPDATE "movies" SET "description"=${req.body.description} WHERE id=${req.params.id};`;
+  let queryString = `UPDATE movies SET description='hard coded description' WHERE id=${req.params.id};`;
+
   pool
     .query(queryString)
     .then(() => {

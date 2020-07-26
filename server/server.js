@@ -7,6 +7,7 @@ const editRouter = require("./routes/edit.router.js");
 const genreRouter = require("./routes/genre.router");
 /** ---------- MIDDLEWARE ---------- **/
 app.use(bodyParser.json()); // needed for angular requests
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("build"));
 
 /** ---------- ROUTES ---------- **/

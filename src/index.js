@@ -40,8 +40,12 @@ function* getMoviesFromServer(action) {
 }
 function* editDetailsPage(action) {
   try {
-    console.log("EDIT SAGA Details", action.payload.description);
-    yield Axios.put("/edit/", { description: action.payload.description });
+    console.log("EDIT SAGA Details", action.payload.id);
+    yield Axios({
+      method: "PUT",
+      url: `/edit/${action.payload.id}`,
+      payload: { description: action.payload.description },
+    });
   } catch (error) {
     console.log("ERROR in editDetailsPage", error);
   }
