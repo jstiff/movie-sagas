@@ -6,10 +6,11 @@ const router = express.Router();
 router.put("/:id", (req, res) => {
   console.log("inside ROUTER PUT", req.body);
 
-  let queryString = `UPDATE movies SET description='hard coded description' WHERE id=${req.params.id};`;
+  const queryString = `UPDATE movies SET description=$1 WHERE id=$2;`;
+  const queryValues = [req.body.description, req.body.id];
 
   pool
-    .query(queryString)
+    .query(queryString, queryValues)
     .then(() => {
       res.sendStatus(201);
     })
