@@ -1,9 +1,16 @@
 # Project Name
 
-[Project Instructions](./INSTRUCTIONS.md), this line may be removed once you have updated the README.md
-
 ## Description
 
-Your project description goes here. What problem did you solve? How did you solve it?
+This project is a movie editing site for admins for the Netflix corporation. Only the senior executives have access to it.
+
+## Technologies used.
+
+--Node
+--React
+--Redux
+--Postresql
+
+## Special thanks to all Netflix users who inspired this project along.
 
 Additional README details can be found [here](https://github.com/PrimeAcademy/readme-template/blob/master/README.md).
