@@ -17,7 +17,7 @@ class Edit extends Component {
   submitChanges = (event) => {
     event.preventDefault();
     const submissionDetails = {
-      id: this.props.match.params.id,
+      id: this.id,
       description: this.state.description,
       title: this.state.title,
     };
@@ -32,6 +32,8 @@ class Edit extends Component {
 
   render() {
     console.log("INSIDE edit Props", this.props);
+    const { id } = this.props.match.params;
+    console.log("ID:", id);
     return (
       <>
         <h1>Edit page!</h1>
@@ -50,9 +52,14 @@ class Edit extends Component {
             onChange={(event) => this.handleChange(event, "title")}
             placeholder="Change Movie Title"
           />
-          {/* <Link type="submit" to="/confirmation"></Link> */}
-          <button type="submit">submit changes</button>
-
+          <Link
+            to={{
+              pathname: `/confirmation/${id}`,
+              state: { title: this.state.title },
+            }}
+          >
+            <button type="submit">submit changes</button>
+          </Link>
           <Link className="returnBtn" to="/movies">
             <button>Return to movies</button>
           </Link>

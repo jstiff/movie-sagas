@@ -2,26 +2,30 @@ CREATE TABLE "movies" (
   "id" SERIAL PRIMARY KEY,
   "title" VARCHAR(120) NOT NULL,
   "poster"  VARCHAR(120) NOT NULL,
-  "description" TEXT NOT NULL
+  "description" VARCHAR(500) NOT NULL
 );
+ALTER TABLE movies
+ALTER COLUMN description TYPE TEXT;
 
--- movies can have multiple genres
 CREATE TABLE "genres" (
   "id" SERIAL PRIMARY KEY,
   "name" VARCHAR(80) NOT NULL
 );
+SELECT * FROM "movie_genres";
 
+CREATE TABLE "movie_genres" (
+	"id" SERIAL PRIMARY KEY,
+	"movie_id" integer REFERENCES movies,
+	"genre_id" integer REFERENCES genres
+);
 
--- CREATE JUNCTION TABLE
--- You will need to create the junction table that stores the relationships between "movies" and "genres"
--- This table will need to be populated with some data as well (INSERTS)
--- Recall that this Junction Table will just be a table of ids!
+DROP TABLE "movie_genres";
+UPDATE "movies" SET "description"='new description' WHERE id=1;
 
+SELECT description FROM movies WHERE id=2;
+UPDATE movies SET "title"='jason movie' WHERE id=1;
+SELECT * FROM movies;
 
-
---------[ DATA! ]---------
-
--- starter movies
 INSERT INTO "movies" ("title", "poster", "description")
 VALUES 
 ('Avatar', 'images/avatar.jpeg', 'Avatar (marketed as James Cameron''s Avatar) is a 2009 American epic science fiction film directed, written, produced, and co-edited by James Cameron, and stars Sam Worthington, Zoe Saldana, Stephen Lang, Michelle Rodriguez, and Sigourney Weaver. The film is set in the mid-22nd century, when humans are colonizing Pandora, a lush habitable moon of a gas giant in the Alpha Centauri star system, in order to mine the mineral unobtanium, a room-temperature superconductor. The expansion of the mining colony threatens the continued existence of a local tribe of Na''vi – a humanoid species indigenous to Pandora. The film''s title refers to a genetically engineered Na''vi body operated from the brain of a remotely located human that is used to interact with the natives of Pandora.'),
@@ -39,7 +43,7 @@ VALUES
 ('Titanic', 'images/titanic.jpg', 'Titanic is a 1997 American epic romance and disaster film directed, written, co-produced, and co-edited by James Cameron. A fictionalized account of the sinking of the RMS Titanic, it stars Leonardo DiCaprio and Kate Winslet as members of different social classes who fall in love aboard the ship during its ill-fated maiden voyage.'),
 ('Toy Story', 'images/toy-story.jpg', 'Toy Story is a 1995 American computer-animated adventure comedy film produced by Pixar Animation Studios and released by Walt Disney Pictures. The feature-film directorial debut of John Lasseter, it was the first feature-length film to be entirely computer-animated, as well as the first feature film from Pixar. The screenplay was written by Joss Whedon, Andrew Stanton, Joel Cohen, and Alec Sokolow from a story by Lasseter, Stanton, Pete Docter, and Joe Ranft. The film features music by Randy Newman, and was executive-produced by Steve Jobs and Edwin Catmull. The film features the voices of Tom Hanks, Tim Allen, Don Rickles, Wallace Shawn, John Ratzenberger, Jim Varney, Annie Potts, R. Lee Ermey, John Morris, Laurie Metcalf, and Erik von Detten. Taking place in a world where anthropomorphic toys come to life when humans are not present, its plot focuses on the relationship between an old-fashioned pull-string cowboy doll named Woody and an astronaut action figure, Buzz Lightyear, as they evolve from rivals competing for the affections of their owner Andy Davis to friends who work together to be reunited with him after being separated.');
 
--- starter genres
+
 INSERT INTO "genres" ("name")
 VALUES 
 ('Adventure'),
@@ -55,3 +59,53 @@ VALUES
 ('Science Fiction'),
 ('Space-Opera'),
 ('Superhero');
+
+SELECT * FROM movies;
+SELECT * FROM genres; 
+
+INSERT INTO "movie_genres" ("movie_id", "genre_id")
+VALUES
+(1, 1),
+(1, 2),
+(1, 6),
+(1, 11),
+(2, 2),
+(2, 8),
+(2, 9),
+(2, 10),
+(3, 1),
+(3, 11),
+(3, 13),
+(4, 1),
+(4, 2),
+(4, 4),
+(4, 7),
+(5, 6),
+
+(6, 8),
+(7, 1),
+(7, 6),
+
+(8, 1),
+(8, 2),
+(8, 8),
+(9, 1),
+(9, 2),
+(9, 4),
+(9, 8),
+(10, 1),
+(10, 6),
+(10, 7),
+(10, 11),
+(10, 12),
+(11, 1),
+(11, 5),
+(11, 11),
+(11, 13),
+(12, 3),
+(12, 6);
+
+SELECT * 
+FROM movie_genres 
+JOIN genres ON genres.id = movie_genres.genre_id
+WHERE movie_id = 1;
